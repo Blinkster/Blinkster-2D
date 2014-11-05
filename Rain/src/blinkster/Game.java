@@ -1,7 +1,6 @@
 package blinkster;
 
 import java.awt.Canvas;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,6 +17,7 @@ import blinkster.input.Keyboard;
 import blinkster.level.Level;
 import blinkster.level.RandomLevel;
 import blinkster.level.SpawnLevel;
+import blinkster.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -46,9 +46,10 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
+		TileCoordinate playerSpawn = new TileCoordinate(20,60);
 		level = Level.spawn; //new SpawnLevel("/levels/spawn.png");
-		player = new Player(30, 30, key);
-
+		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
+		player.init(level);
 		addKeyListener(key);
 	}
 
@@ -159,3 +160,4 @@ public class Game extends Canvas implements Runnable {
 	}
 
 }
+
