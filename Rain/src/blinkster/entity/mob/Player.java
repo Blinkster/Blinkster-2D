@@ -5,7 +5,12 @@ import blinkster.graphics.Sprite;
 import blinkster.input.Keyboard;
 
 public class Player extends Mob {
+	
+	private static final int STARTING_LIFE = 3;
 
+	private int grace;
+	private int health;
+	
 	private Keyboard input;
 	private Sprite sprite;
 	private int anim = 0;
@@ -14,6 +19,14 @@ public class Player extends Mob {
 	public Player(Keyboard input) {
 		this.input = input;
 		sprite = Sprite.player_foward;
+	}
+	
+	public Player() {
+		health = STARTING_LIFE;
+	}
+	
+	public int getHealth() {
+		return health;
 	}
 
 	public Player(int x, int y, Keyboard input) {
@@ -95,5 +108,18 @@ public class Player extends Mob {
 		screen.renderPlayer(x - 16, y - 16, sprite, flip);
 
 	}
-
+	
+	
+	public void getsDamaged() {
+		if(grace == 0) {
+			health--;
+			if(health <= 0) {
+				if(health == 0) {				
+				}
+				System.out.println("Mario Dies");
+			} else {
+				grace = 80;
+			}
+		}
+	}
 }
