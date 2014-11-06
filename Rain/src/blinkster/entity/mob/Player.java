@@ -6,9 +6,8 @@ import blinkster.input.Keyboard;
 
 public class Player extends Mob {
 	
-	private static final int STARTING_LIFE = 3;
-
-	private int grace;
+	private static final int STARTING_LIFE = 0;
+	
 	private int health;
 	
 	private Keyboard input;
@@ -109,17 +108,15 @@ public class Player extends Mob {
 
 	}
 	
-	
-	public void getsDamaged() {
-		if(grace == 0) {
-			health--;
-			if(health <= 0) {
-				if(health == 0) {				
-				}
-				System.out.println("Mario Dies");
-			} else {
-				grace = 80;
-			}
+	public void getDamage(int attackAmount) {
+		health -= attackAmount;
+		amAlive();
+	    }
+	public void amAlive() {
+		if (health <= 0) {
+        System.out.println("I Died");
 		}
 	}
 }
+
+
