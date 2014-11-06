@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import blinkster.entity.mob.Player;
 import blinkster.graphics.Screen;
 import blinkster.input.Keyboard;
+import blinkster.inventory.Inventory;
 import blinkster.level.Level;
 import blinkster.level.RandomLevel;
 import blinkster.level.SpawnLevel;
@@ -39,6 +40,8 @@ public class Game extends Canvas implements Runnable {
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
+	public static Inventory inventory;
+	
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale);
 		setPreferredSize(size);
@@ -87,6 +90,9 @@ public class Game extends Canvas implements Runnable {
 				update();
 				updates++;
 				delta--;
+				
+				inventory = new Inventory();
+				
 			}
 			render();
 			frames++;
@@ -142,6 +148,10 @@ public class Game extends Canvas implements Runnable {
 		// g.drawString("X: " + x + " Y: " + y, 450, 400);
 		g.dispose();
 		bs.show();
+		
+		Graphics g = screen.getGraphics();
+		
+		inventory.render(g);
 	}
 
 	public static void main(String[] args) {

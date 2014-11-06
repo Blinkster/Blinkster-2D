@@ -6,7 +6,7 @@ import blinkster.input.Keyboard;
 
 public class Player extends Mob {
 	
-	private static final int STARTING_LIFE = 0;
+	private static final int STARTING_LIFE = 3;
 	
 	private int health;
 	

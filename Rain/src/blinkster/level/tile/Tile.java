@@ -13,6 +13,7 @@ public class Tile {
 	public int x, y;
 	public Sprite sprite;
 
+	public static final int[] air = {-1,-1};
 	public static Tile grass = new GrassTile(Sprite.grass);
 	public static Tile flower = new FlowerTile(Sprite.flower);
 	public static Tile rock = new RockTile(Sprite.rock);
@@ -31,6 +32,11 @@ public class Tile {
 	public static final int col_spawn_wall1 = 0xff787878;
 	public static final int col_spawn_wall2 = 0xff282828;
 	public static final int col_spawn_floor = 0xff764b1c;
+	
+	public static int invLength = 8;
+	public static int invCellSize = 25;
+	public static int invCellSpace = 4;
+	public static int invBorderSpace = 4;
 
 	public Tile(Sprite sprite) {
 		this.sprite = sprite;
